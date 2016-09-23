@@ -87,13 +87,12 @@ to use Lora as a backup for the G3-PLC.
 
 The project idea is to create a hybrid modem G3-PLC / LoRa
 for smart metering. The concentrator and the smart meter
-will have the ability to use both communications. They would
-use default G3-PLC, as it provides better throughput (up to
-more than 200 kbps). When using PLC is not possible or is
-difficult they use LoRa link. Long range communication of
-LoRa will compensate the weakness of PLC due to High
-attenuation and high noise in power grid. Two scenarios are
-possible:
+will have the ability to use both communications. By default, 
+they would use G3-PLC, as it provides better throughput (up 
+to 200 kbps). LoRa would only be used when PLC is not possible
+or difficult. Long range communication of LoRa will compensate 
+the weakness of PLC due to High attenuation and high noise in
+power grid. Two scenarios are possible:
 
 \begin{enumerate}
   \item a single SM, the solution is simple a priori, it would use the LoRa link to directly communicate with the concentrator.
