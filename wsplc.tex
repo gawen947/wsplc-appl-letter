@@ -1,0 +1,125 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{parskip}
+
+\linespread{1}
+
+\newcommand{\FIXME}[1]{\textcolor{red}{\framebox{FIXME:} #1}}
+\newcommand{\TODO}[1]{\textcolor{red}{\framebox{TODO:} #1}}
+
+\title{WSPLC Challenge}
+\author{}
+\date{23 sept. 2016}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Project description}
+
+\TODO{find a project title}
+
+The project is part of a smart metering application. Smart
+metering is one of the challenges of deploying a smart grid
+that can respond effectively to the demand for
+electricity. To maintain the balance between supply and
+demand, the Distribution System Operator(DSO) need a
+bidirectional communication system to firstly know what is
+real-time demand for electricity to adapt its production and
+secondly to offer their customers the means to adapt their
+consumption according to supply, for example by starting the
+devices consuming large amounts of electricity when the
+electricity is cheapest.
+
+Several means of communications are possible among which the
+Power Line Communication (PLC). The latter has the advantage
+of using an already existing infrastructure which, moreover,
+belongs to the DSO, namely the power grid itself. However,
+it is not designed to carry high frequency signals, we had
+to create standards to adapt to the characteristics of the
+network. The G3-PLC is one of this standard.
+
+The G3-PLC is a standard that provides solutions to
+characteristics related communication problems from the
+power grid especially high attenuation and the existence of
+several disruptors which generates noise [REF à quelques un
+  des nos articles]. The solution recommended by the G3-PLC
+standard is to use all the Smart Meter(SM) as a
+relay. Therefore, the standard defined a routing protocol,
+the LOADng, which routes data from the various SM through a
+mesh network to a Concentrator. However, studies show us
+that the operation of this network is dependent on the
+density SM [REF à quelques un des nos articles]. The problem
+arises especially in a rural environment where the distances
+between the various counters are important. What happens if
+a meter or a set of meter can not join the mesh network?
+
+One solution would be to use a wireless communication. There
+is a plethora of wireless communication system: GPRS, 3G,
+LTE, WiMAX, etc. All these solutions are also serious
+alternatives to the PLC because they are based on existing
+standards and infrastructures and are easy to
+deploy. However, they make the DSO dependent on
+telecommunications operators. In addition to financial
+problems, the strategies of telecom operators, including
+trying to stay competitive by always offering the latest
+technology to its customers do not always match those of the
+DSO. However, with the emergence of open wireless solutions
+such as LoRa / LoRaWAN, wireless solutions become again an
+option for smart metering applications. The LoRa enables a
+reliable and long range (up to 10 km) wireless communication
+and low cost. However, this communication has a very modest
+rate of a few kilobits per second. For our project, we plan
+to use Lora as a backup for the G3-PLC.
+
+The project idea is to create a hybrid modem G3-PLC / LoRa
+for smart metering. The concentrator and the smart meter
+will have the ability to use both communications. They would
+use default G3-PLC, as it provides better throughput (up to
+more than 200 kbps). When using PLC is not possible or is
+difficult they use LoRa link. Long range communication of
+LoRa will compensate the weakness of PLC due to High
+attenuation and high noise in power grid. Two scenarios are
+possible:
+
+\begin{enumerate}
+  \item a single SM, the solution is simple a priori, it would use the LoRa link directly communicate with the concentrator.
+  \item or a set of SM isolated and between which there is still a mesh network. The project will have to define the strategy:
+    \begin{enumerate}
+      \item either repatriate G3-PLC data to a single SM and the latter undertakes to send them to the concentrator via its LoRa link.
+      \item or let each smart meter would use his LoRa link to send data directly to the hub.
+    \end{enumerate}
+\end{enumerate}
+
+In both scenarios, the project will define:
+
+\begin{enumerate}
+\item The parameters to be considered to take decision to use LoRa link and the G3-PLC link: PER, LQI, data rate etc.
+\item Interactions between upper layers and lower layers to take this decision;
+\item Interactions between concentrator and SM, including how the concentrator uses its neighborhood or routing table to make the choice between the G3-PLC and LoRa link.
+\item In the second case (set of SM) how to make the choice of the SM that retrieves data to the concentrator.
+\end{enumerate}
+
+\section{Team member presentation}
+
+\subsection{Gaston BAYOT KATUMBA}
+
+\subsection{Aurélien VAN LAERE}
+
+\subsection{David HAUWEELE}
+
+\subsection{Jeremy DUBRULLE}
+
+\subsection{Supervisor: Prof. Dr Ir Sébastien BETTE}
+
+\bibliographystyle{abbrv} \bibliography{biblio}
+
+\end{document}
