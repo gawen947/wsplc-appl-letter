@@ -98,19 +98,19 @@ attenuation and high noise in power grid. Two scenarios are
 possible:
 
 \begin{enumerate}
-  \item a single SM, the solution is simple a priori, it would use the LoRa link directly communicate with the concentrator.
-  \item or a set of SM isolated and between which there is still a mesh network. The project will have to define the strategy:
+  \item a single SM, the solution is simple a priori, it would use the LoRa link to directly communicate with the concentrator.
+  \item or a set of isolated SM and between which there is still a mesh network. The project will have to define the strategy:
     \begin{enumerate}
-      \item either repatriate G3-PLC data to a single SM and the latter undertakes to send them to the concentrator via its LoRa link.
-      \item or let each smart meter would use his LoRa link to send data directly to the hub.
+      \item either repatriate G3-PLC data to a single SM and the latter undertakes to send them to the concentrator via its LoRa link
+      \item or let each smart meter use his LoRa link to send data directly to the hub.
     \end{enumerate}
 \end{enumerate}
 
 In both scenarios, the project will define:
 
 \begin{enumerate}
-\item The parameters to be considered to take decision to use LoRa link and the G3-PLC link: PER, LQI, data rate etc.
-\item Interactions between upper layers and lower layers to take this decision;
+\item The parameters influencing the selection of the medium: PER, LQI, data rate etc.
+\item Interactions between upper layers and lower layers to take this decision.
 \item Interactions between concentrator and SM, including how the concentrator uses its neighborhood or routing table to make the choice between the G3-PLC and LoRa link.
 \item In the second case (set of SM) how to make the choice of the SM that retrieves data to the concentrator.
 \end{enumerate}
